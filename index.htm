@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+    <head>  
+        <title>CoolKid</title>
+
+        <style>
+            body{
+                background-color:pink;
+
+            }
+            #header{
+                width:100%;
+                height:500px;
+            }
+            #p1{
+                font-size:200%;
+                margin-left:500px;
+            }
+            #span1{
+                font-size:200%;
+                margin-left:500px; 
+            }
+            #qnty1{
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                margin-left:400px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            #img1{
+                background-color:silver;
+                margin-left:500px;
+            }
+
+            #p2{
+                font-size:200%;
+                margin-left:500px;
+            }
+            #span2{
+                font-size:200%;
+                margin-left:500px; 
+            }
+            #qnty2{
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                margin-left:400px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            #img2{
+                background-color:darkred;
+                margin-left:600px;
+                width:20%;
+                height:20%;
+            }
+
+            #p3{
+                
+                font-size:200%;
+                margin-left:500px;
+            }
+            #span3{
+                font-size:200%;
+                margin-left:500px; 
+            }
+            #qnty3{
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                margin-left:400px;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            #img3{
+                background-color:beige;
+                width:25%;
+                height:25%;
+                margin-left:600px; 
+            }
+            #butt{
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                margin-left:650px;
+                width:20em;
+            }
+            #recipt{
+                width:750px;
+                height:20%;
+                background-color:whitesmoke;
+                font-size:150%;
+                margin-left:500px;
+            }
+
+
+        </style>
+
+        <script>
+            var price1= 0.50;
+            var price2= 1;
+            var price3= 3;
+            var taxrate=0.875;
+            var whole1=0.08
+            var whole2=0.5
+            var whole3=2
+            
+            
+            function initprices(){
+                document.getElementById("span1").innerHTML="Price: "+price1;
+                document.getElementById("span2").innerHTML="Price: "+price2;
+                document.getElementById("span3").innerHTML="Price: "+price3;
+            }
+            
+            
+        </script>
+
+        <script>
+            
+
+            function submit(){
+                var op1=document.getElementById("recipt");
+                var quantity1=parseFloat(document.getElementById("qnty1").value);
+                var quantity2=parseFloat(document.getElementById("qnty2").value);
+                var quantity3=parseFloat(document.getElementById("qnty3").value);
+                var total1=price1*quantity1;
+                var total2=price2*quantity2;
+                var total3=price3*quantity3;
+                var total=total1+total2+total3;
+                var quantity=quantity1+quantity2+quantity3;
+                var subtotal1= whole1*quantity1;
+                var subtotal2= whole2*quantity2;
+                var subtotal3= whole3*quantity3;
+                var subtotal=subtotal1+subtotal2+subtotal3;
+                var profit=total-subtotal;
+                var tax=total*taxrate;
+                
+
+                if (total<100){
+                    var shipping=25;
+                }
+                else if(total>=100 && total<=200){
+                    var shipping=10
+                }
+                else if(total>200){
+                    var shipping=0
+                }
+
+
+
+
+
+
+                var build="";
+                build+="<pre>";
+                build+="**  CUSTOMER ORDER DETAILS  **";
+                build+="<br>";
+                build+="Refined Metal: $"+total1+" You bought: "+quantity1+" Refined Metals";
+                build+="<br>";
+                build+="Crafted Hat: $"+total2+" You bought: "+quantity2+" Crafted Hats";
+                build+="<br>";
+                build+="Keys: $"+total3+" You bought: "+quantity3+" Keys";
+                build+="<br>";
+                build+="------------------------------";
+                build+="<br>";
+                build+="Your tax is: "+tax;
+                build+="<br>";
+                build+="Your Shipping fee is: $" + shipping;
+                build+="<br>";
+                build+="Your Total Fee is : $" + total;
+                build+="<br>";
+                build+="<br>";
+                build+="**   ORDER DETAILS FOR COMPANY   **";
+                build+="<br>";
+                build+="Total item Sold: "+quantity;
+                build+="<br>";
+                build+="Customer SubTotal: $"+ total;
+                build+="<br>";
+                build+="Company Subtotal: $"+ subtotal;
+                build+="<br>";
+                build+="------------------------------";
+                build+="<br>";
+                build+="Total Profit: " +profit;
+
+
+
+                recipt.innerHTML=build;
+
+            }
+        </script>
+
+        <body onload="initprices()" id="body">
+            
+            <img src="tf2.png" id="header">
+            <div>
+                <img src="metal.gif" id="img1">
+                <br>
+                <p id="p1">This is a tf2 Refined Metal.
+                    <br>
+                    They are needed to craft hats or weapons. 
+                    <br>
+                    They are also the main base of trading in tf2</p>
+                <span id="span1"></span>
+                <br>
+                <input type="text" id="qnty1" placeholder="Enter # of items">
+                <br>
+            </div>
+            <div>
+                <img src="hat.gif" id="img2">
+                <br>
+                <p id="p2">This is a tf2 craftable hat. 
+                    <br>They are just used to trade up for profit.</p>
+                <span id="span2"></span>
+                <br>
+                <input type="text" id="qnty2" placeholder="Enter # of items">
+                <br>
+            </div>
+            <div>
+                <img src="gif.gif" id="img3">
+                <br>
+                <p id="p3">This is a tf2 key. 
+                    <br>They are used for big trades.</p>
+                <span id="span3"></span>
+                <br>
+                <input type="text" id="qnty3" placeholder="Enter # of items">
+                <br>
+            </div>
+            <button onclick="submit()" id="butt">submit</button>
+            <div id="recipt">
+
+
+
+
+
+
+            </div>
+
+
+
+            
+
+            
+        </body>
+
+    </head>
+</body>
+</html>
